@@ -1,0 +1,33 @@
+server:
+  port: 8763
+
+spring:
+  application:
+    name: newsPortal-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:6666/TTPortal
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+      registerWithEureka: true
+      fetchRegistry: true
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.timofey.: DEBUG
