@@ -1,0 +1,20 @@
+@import "tailwindcss";
+:root {
+	--brand-red: #e30613;
+}
+@layer utilities {
+	.brand-red-bg {
+		background-color: var(--brand-red);
+	}
+	.brand-red-text {
+		color: var(--brand-red);
+	}
+	.hover-transition {
+		transition: all 0.2s;
+	}
+	@media (any-hover: hover) {
+		.hover-brand-red-text:hover {
+			color: var(--brand-red);
+		}
+	}
+}
