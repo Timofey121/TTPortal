@@ -1,24 +1,21 @@
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import { Icon } from "../icons/Icon";
+import { Icon } from "../../ui/icons/Icon";
 import { NavLink } from "react-router-dom";
 
 interface AsideItemProps {
   icon: IconDefinition;
   title: string;
   link: string;
+  onClick: () => void;
 }
-export const AsideItem = ({ icon, title, link }: AsideItemProps) => {
+export const AsideItem = ({ icon, title, link, onClick }: AsideItemProps) => {
   return (
-    <li>
+    <li onClick={onClick}>
       <NavLink
         to={link}
-        // className={
-        //   "flex items-center space-x-3 py-2 px-3 rounded text-gray-500 hover-brand-red-text hover-transition" +
-        //   (() => (isActive ? "brand-red-text" : ""))
-        // }
         className={({ isActive }) =>
           `flex items-center space-x-3 py-2 px-3 rounded hover-brand-red-text hover-transition ${
-            isActive ? "brand-red-text" : ""
+            isActive ? "brand-red-text" : "text-gray-500"
           }`
         }
       >

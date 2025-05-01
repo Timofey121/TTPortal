@@ -18,3 +18,10 @@
 		}
 	}
 }
+
+@theme {
+	--breakpoint-xs: 20rem;
+	--breakpoint-sm: 30rem;
+	--breakpoint-md: 48rem;
+	--breakpoint-lg: 64rem;
+}
