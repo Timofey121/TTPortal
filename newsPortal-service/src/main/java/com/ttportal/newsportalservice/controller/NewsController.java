@@ -18,7 +18,7 @@ import java.util.Map;
 public class NewsController {
     private final NewsService newsService;
 
-    @GetMapping("/all")
+    @GetMapping
     public List<ResponseNews> getAllNewsByCategory(
             @RequestParam(value = "category", required = false) String category,
             @RequestParam(value = "limit", defaultValue = "5", required = false) int limit
@@ -40,5 +40,4 @@ public class NewsController {
     public ResponseEntity<ResponseNews> updateNews(@PathVariable Long id, @RequestBody Map<String, Object> updatesField) {
         return ResponseEntity.ok(newsService.update(id, updatesField));
     }
-
 }

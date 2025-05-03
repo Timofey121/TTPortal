@@ -6,26 +6,26 @@ spring:
     name: newsPortal-service
 
   datasource:
-    url: jdbc:postgresql://localhost:6666/TTPortal
-    username: admin
-    password: admin
+    url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/TTPortal}"
+    username: "${SPRING_DATASOURCE_USERNAME:admin}"
+    password: "${SPRING_DATASOURCE_PASSWORD:admin}"
     driver-class-name: org.postgresql.Driver
 
   jpa:
-    hibernate:
-      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
+    hibernate:
+      ddl-auto: update
 
-  eureka:
-    client:
-      service-url:
-        defaultZone: http://localhost:8761/eureka/
-      registerWithEureka: true
-      fetchRegistry: true
+eureka:
+  client:
+    service-url:
+      defaultZone: "${SPRING_EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}"
+    register-with-eureka: "${SPRING_EUREKA_CLIENT_REGISTERWITHEUREKA:true}"
+    fetch-registry: "${SPRING_EUREKA_CLIENT_FETCHREGISTRY:true}"
 
 logging:
   level:
