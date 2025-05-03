@@ -5,14 +5,16 @@ interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   buttonText?: string;
+  className?: string;
 }
 export const SectionHeader = ({
   title,
   subtitle,
   buttonText,
+  className,
 }: SectionHeaderProps) => {
   return (
-    <div className="flex justify-between items-center mb-6">
+    <div className={`flex justify-between items-center mb-6 ${className}`}>
       <div>
         <h2 className="text-2xl font-bold text-dark-gray">{title}</h2>
         <span>{subtitle}</span>

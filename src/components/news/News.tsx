@@ -1,4 +1,5 @@
 import { SectionHeader } from "../../ui/SectionHeader";
+import { NewsFilter } from "./newsFilter/NewsFilter";
 
 export const News = () => {
   return (
@@ -7,6 +8,7 @@ export const News = () => {
         title="Корпоративные новости"
         buttonText="Добавить новость"
       />
+      <NewsFilter />
     </section>
   );
 };
