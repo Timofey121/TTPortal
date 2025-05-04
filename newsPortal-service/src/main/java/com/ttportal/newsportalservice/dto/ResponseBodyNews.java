@@ -1,6 +1,6 @@
-package com.ttportal.newsportalservice.entity;
+package com.ttportal.newsportalservice.dto;
 
-import jakarta.persistence.*;
+import com.ttportal.newsportalservice.entity.CategoryNews;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,20 +8,15 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "news")
-public class News {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+@AllArgsConstructor
+public class ResponseBodyNews {
+    Long id;
 
     String title;
 
-    @Enumerated(EnumType.STRING)
     CategoryNews category;
 
     String category_tag;

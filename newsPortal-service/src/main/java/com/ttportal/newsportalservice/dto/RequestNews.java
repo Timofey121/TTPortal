@@ -1,6 +1,7 @@
 package com.ttportal.newsportalservice.dto;
 
 import com.ttportal.newsportalservice.entity.CategoryNews;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,20 +18,26 @@ import java.time.LocalDate;
 public class RequestNews {
 
     @NotNull
-    String creator;
-
-    @NotNull
     String title;
 
     @NotNull
-    String description;
+    CategoryNews category;
 
     @NotNull
-    CategoryNews categoryNews;
+    String category_tag;
 
     @NotNull
     LocalDate date;
 
     @NotNull
-    String imageUrl;
+    String text;
+
+    @NotNull
+    String author_avatar;
+
+    @NotNull
+    String thumb;
+
+    @NotNull
+    String creator;
 }

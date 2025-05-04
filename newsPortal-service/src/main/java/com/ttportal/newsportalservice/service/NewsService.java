@@ -1,7 +1,7 @@
 package com.ttportal.newsportalservice.service;
 
 import com.ttportal.newsportalservice.dto.RequestNews;
-import com.ttportal.newsportalservice.dto.ResponseNews;
+import com.ttportal.newsportalservice.dto.ResponseBodyNews;
 import com.ttportal.newsportalservice.entity.CategoryNews;
 import com.ttportal.newsportalservice.entity.News;
 import com.ttportal.newsportalservice.mapper.NewsMapper;
@@ -26,26 +26,26 @@ public class NewsService {
     private final NewsRepository newsRepository;
     private final NewsMapper newsMapper;
 
-    public List<ResponseNews> findAllByLimit(int limit) {
+    public List<ResponseBodyNews> findAllByLimit(int limit) {
         Pageable pg = PageRequest.of(0, limit, Sort.by("date").descending());
         return newsRepository.findAll(pg).getContent().stream()
                 .map(newsMapper::NewsToNewsResponse)
                 .collect(Collectors.toList());
     }
 
-    public List<ResponseNews> findByCategoryAndCount(CategoryNews categoryNews, int limit) {
+    public List<ResponseBodyNews> findByCategoryAndCount(CategoryNews categoryNews, int limit) {
         Pageable pg = PageRequest.of(0, limit, Sort.by("date").descending());
-        return newsRepository.findByCategoryNews(categoryNews, pg).stream()
+        return newsRepository.findByCategory(categoryNews, pg).stream()
                 .map(newsMapper::NewsToNewsResponse)
                 .collect(Collectors.toList());
     }
 
-    public ResponseNews create(RequestNews requestNews) {
+    public ResponseBodyNews create(RequestNews requestNews) {
         return newsMapper.NewsToNewsResponse(newsRepository.save(newsMapper.RequestNewsToNews(requestNews)));
     }
 
-    public ResponseNews update(Long id,
-                               Map<String, Object> updatesField) {
+    public ResponseBodyNews update(Long id,
+                                   Map<String, Object> updatesField) {
         News news = newsRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "News not found"));
 

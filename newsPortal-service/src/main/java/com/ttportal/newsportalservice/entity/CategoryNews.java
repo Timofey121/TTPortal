@@ -5,17 +5,14 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-
 @Getter
 @RequiredArgsConstructor
 public enum CategoryNews {
-    ПОЛИТИКА("Политика"),
-    СПОРТ("Спорт"),
-    ЭКОНОМИКА("Экономика"),
-    ВСЕ("Все");
+    ВСЕ("Все"),
+    СОБЫТИЯ("События"),
+    ОНОВЛЕНИЯ("Обновления"),
+    ДОСТИЖЕНИЯ("Достижения"),
+    СОТРУДНИКИ("Сотрудники");
 
     private final String displayName;
 

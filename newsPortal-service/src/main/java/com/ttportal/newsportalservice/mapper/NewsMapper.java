@@ -2,17 +2,16 @@ package com.ttportal.newsportalservice.mapper;
 
 
 import com.ttportal.newsportalservice.dto.RequestNews;
-import com.ttportal.newsportalservice.dto.ResponseNews;
+import com.ttportal.newsportalservice.dto.ResponseBodyNews;
 import com.ttportal.newsportalservice.entity.News;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
-import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface NewsMapper {
-    ResponseNews NewsToNewsResponse(News news);
+    ResponseBodyNews NewsToNewsResponse(News news);
 
     News RequestNewsToNews(RequestNews requestNews);
 
