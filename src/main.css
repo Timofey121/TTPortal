@@ -32,4 +32,6 @@
 	--breakpoint-sm: 30rem;
 	--breakpoint-md: 48rem;
 	--breakpoint-lg: 64rem;
+	--breakpoint-xl: 75rem;
+	--breakpoint-xxl: 87rem;
 }

@@ -81,7 +81,7 @@ export const NewsItem = ({
               <p>{text}</p>
             </div>
           </div>
-          <div className="flex justify-between items-center h-8">
+          <div className="flex justify-between items-center min-h-8 flex-col md:flex-row gap-2">
             {!layout.includes("no-user") && (
               <UserPreview user_avatar={author_avatar} userFio={author} />
             )}

@@ -8,7 +8,7 @@ export const Aside = () => {
 
   return (
     <aside
-      className={`w-screen border-r border-gray-200 min-h-screen transition-all py-6 px-4 md:w-64 md:relative absolute bg-white ${
+      className={`z-10 absolute w-screen border-r border-gray-200 min-h-screen transition-all py-6 px-4 md:w-64 md:relative bg-white ${
         isOpened ? `${styles.aside_opened}` : `${styles.aside_closed}`
       }`}
     >

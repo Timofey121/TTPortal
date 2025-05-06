@@ -45,7 +45,7 @@ export const NewsFilter = ({
 
   return (
     <>
-      <div className="flex space-x-6 border-b border-gray-200 mb-6">
+      <div className="flex space-x-6 border-b border-gray-200 mb-6 overflow-scroll w-screen pb-2 md:pb-0">
         {newsCategories.map((e) => {
           if (e.category == activeCategory) {
             return (
@@ -70,26 +70,47 @@ export const NewsFilter = ({
         })}
       </div>
       <section
-        className={`${styles.news_container} grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10`}
+        className={`${styles.news_container} grid grid-cols-1 lg:grid-cols-2 xxl:grid-cols-3 gap-6 mb-10`}
       >
         {filteredNews.map((e, idx) => {
           if (idx == 0) {
             return (
-              <NewsItem
-                key={e.id}
-                title={e.title}
-                label={e.label}
-                category={e.category}
-                timestamp={e.timestamp}
-                text={e.text}
-                author={e.author}
-                author_avatar={e.author_avatar}
-                thumb={e.thumb}
-                layout={"vertical"}
-                categoryTag={e.category_tag}
-                onNewsEdit={() => onEditNews("edit", e)}
-                onDeleteNews={() => onDelete(e)}
-              />
+              <div className="h-full">
+                <div className="xl:flex hidden h-full">
+                  <NewsItem
+                    key={e.id}
+                    title={e.title}
+                    label={e.label}
+                    category={e.category}
+                    timestamp={e.timestamp}
+                    text={e.text}
+                    author={e.author}
+                    author_avatar={e.author_avatar}
+                    thumb={e.thumb}
+                    layout={"vertical"}
+                    categoryTag={e.category_tag}
+                    onNewsEdit={() => onEditNews("edit", e)}
+                    onDeleteNews={() => onDelete(e)}
+                  />
+                </div>
+                <div className="xl:hidden flex h-full">
+                  <NewsItem
+                    key={e.id}
+                    title={e.title}
+                    label={e.label}
+                    category={e.category}
+                    timestamp={e.timestamp}
+                    text={e.text}
+                    author={e.author}
+                    author_avatar={e.author_avatar}
+                    thumb={e.thumb}
+                    layout={"vertical no-user"}
+                    categoryTag={e.category_tag}
+                    onNewsEdit={() => onEditNews("edit", e)}
+                    onDeleteNews={() => onDelete(e)}
+                  />
+                </div>
+              </div>
             );
           } else if (idx == 1) {
             return (

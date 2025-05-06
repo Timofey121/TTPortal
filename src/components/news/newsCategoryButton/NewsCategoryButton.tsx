@@ -15,7 +15,7 @@ export const NewsCategoryButton = ({
 }: NewsCategoryButtonProps) => {
   return (
     <button
-      className={`cursor-pointer category-tab pb-2 px-1 text-gray-500 hover-brand-red-text ${className}`}
+      className={`cursor-pointer text-nowrap category-tab pb-2 px-1 text-gray-500 hover-brand-red-text ${className}`}
       onClick={() => onClick(category)}
       data-category={category}
     >

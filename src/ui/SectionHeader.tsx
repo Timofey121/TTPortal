@@ -13,7 +13,9 @@ export const SectionHeader = ({
   className,
 }: SectionHeaderProps) => {
   return (
-    <div className={`flex justify-between items-center mb-6 ${className}`}>
+    <div
+      className={`flex flex-col md:flex-row justify-between md:items-center items-start gap-4 mb-6 ${className}`}
+    >
       <div>
         <h2 className="text-2xl font-bold text-dark-gray">{title}</h2>
         <span>{subtitle}</span>
