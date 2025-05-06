@@ -26,27 +26,23 @@ export const NewsFilter = ({
 
   useEffect(() => {
     if (activeCategory !== "all") {
-      setFilteredNews(
-        news.filter((item) => item.category_tag === activeCategory)
+      const filtered = news.filter(
+        (item) => item.category_tag === activeCategory
       );
+      filtered.sort(
+        (a, b) =>
+          new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
+      );
+      setFilteredNews(filtered);
     } else {
-      setFilteredNews(news);
+      const sortedNews = [...news].sort(
+        (a, b) =>
+          new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+      );
+      setFilteredNews(sortedNews);
     }
   }, [activeCategory, news]);
 
-  // const backend_news = async () => {
-  //   const news = await fetch("/api/v1/news/all", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //   });
-
-  //   const json = await news.json();
-
-  //   console.log(json);
-  //   return json;
-  // };
   return (
     <>
       <div className="flex space-x-6 border-b border-gray-200 mb-6">

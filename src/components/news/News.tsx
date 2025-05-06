@@ -65,9 +65,18 @@ const NewsContent = () => {
   };
 
   const handleSave = (data: INews) => {
-    setNewsArray((prev) =>
-      prev.map((item) => (item.id === data.id ? { ...data } : item))
-    );
+    if (data.id) {
+      setNewsArray((prev) =>
+        prev.map((item) => (item.id === data.id ? { ...data } : item))
+      );
+    } else {
+      const newNews: INews = {
+        ...data,
+        id: Date.now(),
+        timestamp: new Date().toISOString(),
+      };
+      setNewsArray((prev) => [...prev, newNews]);
+    }
   };
 
   const handleDelete = (data: INews) => {

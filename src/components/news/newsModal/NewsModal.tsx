@@ -24,6 +24,7 @@ export const NewsModal = ({
   const [formData, setFormData] = useState<INews>({
     title: "",
     category_tag: "events",
+    category: "События",
     timestamp: new Date().toISOString(),
     thumb: "",
     text: "",
@@ -35,9 +36,9 @@ export const NewsModal = ({
       setFormData(newsContent);
     } else {
       setFormData({
-        id: "",
         title: "",
         category_tag: "events",
+        category: "События",
         timestamp: new Date().toISOString(),
         thumb: "",
         text: "",
@@ -54,6 +55,15 @@ export const NewsModal = ({
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+      category: e.target.querySelector(`option[value=${value}]`)!.innerHTML,
     }));
   };
 
@@ -119,7 +129,7 @@ export const NewsModal = ({
                   name="category_tag"
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500"
                   value={formData.category_tag}
-                  onChange={handleChange}
+                  onChange={handleSelectChange}
                 >
                   <option value="events">События</option>
                   <option value="updates">Обновления</option>
