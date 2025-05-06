@@ -23,7 +23,10 @@ export const FutureEvents = () => {
         {events.map((e, idx) => {
           return (
             idx < 3 && (
-              <div className="border-l-4 border-gray-200 hover:border-[#e30613] pl-4 py-2 event-card transition duration-200">
+              <div
+                key={e.id}
+                className="border-l-4 border-gray-200 hover:border-[#e30613] pl-4 py-2 event-card transition duration-200"
+              >
                 <div className="flex items-start">
                   <div className="brand-red-bg text-white p-2 rounded mr-3 w-8 h-10 flex items-center justify-center">
                     {e.type === "other" ? (

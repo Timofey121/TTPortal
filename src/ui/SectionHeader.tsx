@@ -1,16 +1,15 @@
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Icon } from "./icons/Icon";
+import { ReactNode } from "react";
 
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
-  buttonText?: string;
+  button?: ReactNode;
   className?: string;
 }
 export const SectionHeader = ({
   title,
   subtitle,
-  buttonText,
+  button,
   className,
 }: SectionHeaderProps) => {
   return (
@@ -19,13 +18,7 @@ export const SectionHeader = ({
         <h2 className="text-2xl font-bold text-dark-gray">{title}</h2>
         <span>{subtitle}</span>
       </div>
-      <button
-        id="addNewsBtn"
-        className="brand-red-bg text-white px-4 py-2 rounded hover:bg-red-700 transition duration-200 flex items-center gap-2 cursor-pointer"
-      >
-        <Icon icon={faPlus} />
-        <span>{buttonText}</span>
-      </button>
+      {button}
     </div>
   );
 };

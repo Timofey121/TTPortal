@@ -1,20 +1,38 @@
-import { useState } from "react";
-import { newsCategories, news } from "../news.data";
+import { useEffect, useState } from "react";
 import { NewsCategoryButton } from "../newsCategoryButton/NewsCategoryButton";
 import styles from "./NewsFilter.module.scss";
 import { NewsItem } from "../newsItem/NewsItem";
+import { INews, INewsCategory } from "../News";
 
-export const NewsFilter = () => {
+interface NewsFilterProps {
+  news: INews[];
+  newsCategories: INewsCategory[];
+  onEditNews: (mode: "add" | "edit", currentNews?: INews) => void;
+  onDelete: (news: INews) => void;
+}
+
+export const NewsFilter = ({
+  news,
+  newsCategories,
+  onEditNews,
+  onDelete,
+}: NewsFilterProps) => {
+  const [filteredNews, setFilteredNews] = useState(news);
   const [activeCategory, setActiveCategory] = useState("all");
 
   const onBtnClickHandler = (tag: string) => {
-    setActiveCategory(() => tag);
+    setActiveCategory(tag);
   };
 
-  const filteredNews =
-    activeCategory === "all"
-      ? news
-      : news.filter((item) => item.category_tag === activeCategory);
+  useEffect(() => {
+    if (activeCategory !== "all") {
+      setFilteredNews(
+        news.filter((item) => item.category_tag === activeCategory)
+      );
+    } else {
+      setFilteredNews(news);
+    }
+  }, [activeCategory, news]);
 
   // const backend_news = async () => {
   //   const news = await fetch("/api/v1/news/all", {
@@ -50,7 +68,6 @@ export const NewsFilter = () => {
                 key={e.category}
                 title={e.title}
                 category={e.category}
-                // className={"brand-red-text"}
               />
             );
           }
@@ -73,6 +90,9 @@ export const NewsFilter = () => {
                 author_avatar={e.author_avatar}
                 thumb={e.thumb}
                 layout={"vertical"}
+                categoryTag={e.category_tag}
+                onNewsEdit={() => onEditNews("edit", e)}
+                onDeleteNews={() => onDelete(e)}
               />
             );
           } else if (idx == 1) {
@@ -88,6 +108,9 @@ export const NewsFilter = () => {
                 author_avatar={e.author_avatar}
                 thumb={e.thumb}
                 layout={"vertical no-user"}
+                categoryTag={e.category_tag}
+                onNewsEdit={() => onEditNews("edit", e)}
+                onDeleteNews={() => onDelete(e)}
               />
             );
           } else {
@@ -103,6 +126,9 @@ export const NewsFilter = () => {
                 author_avatar={e.author_avatar}
                 thumb={e.thumb}
                 layout={"horizontal"}
+                categoryTag={e.category_tag}
+                onNewsEdit={() => onEditNews("edit", e)}
+                onDeleteNews={() => onDelete(e)}
               />
             );
           }
