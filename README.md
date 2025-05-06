@@ -32,8 +32,8 @@ newsPortal/
 
 📦 Подробные инструкции по запуску, сборке и тестированию находятся в соответствующих модулях:
 
-- [`newsPortal-frontend/README.md`](./newsPortal-frontend/README.md)
-- [`newsPortal-backend/README.md`](./newsPortal-backend/README.md)
+- newsPortal-frontend/README.md
+- newsPortal-backend/README.md
 
 ---
 
